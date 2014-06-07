@@ -16,4 +16,6 @@
 -->
 <resources>
 
+    <style name="NflHorizontalIntedeterminateProgressBar" parent="SmoothProgressBar"/>
+        
 </resources>

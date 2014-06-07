@@ -37,7 +37,8 @@
     <fr.castorflex.android.smoothprogressbar.SmoothProgressBar
         android:id="@id/ptr_progress"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/ptr_progress_bar_stroke_width"
+        style="@style/NflHorizontalIntedeterminateProgressBar"
         android:minHeight="@dimen/ptr_progress_bar_stroke_width"/>
 
 </RelativeLayout>
