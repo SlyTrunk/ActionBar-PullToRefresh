@@ -54,6 +54,7 @@ public class PullToRefreshAttacher {
 
     private Activity mActivity;
     private View mHeaderView;
+    private View mMaskView;
     private HeaderViewListener mHeaderViewListener;
 
     private final int mTouchSlop;
@@ -88,6 +89,9 @@ public class PullToRefreshAttacher {
         mActivity = activity;
         mRefreshableViews = new WeakHashMap<View, ViewDelegate>();
 
+        // Set up the mask view
+        mMaskView = options.maskView != null ? options.maskView : null; 
+        
         // Copy necessary values from options
         mRefreshScrollDistance = options.refreshScrollDistance;
         mRefreshOnUp = options.refreshOnUp;
@@ -310,6 +314,10 @@ public class PullToRefreshAttacher {
     }
 
     final boolean isViewBeingDragged(View view, MotionEvent event) {
+    	if (mMaskView != null && mMaskView.isShown()) {
+    		if (DEBUG) Log.d(LOG_TAG, "Mask is visible on the UI. I will do NOTHING!!");
+    		return false;
+    	}
         if (view.isShown() && mRefreshableViews.containsKey(view)) {
             // First we need to set the rect to the view's screen co-ordinates
             view.getLocationOnScreen(mViewLocationResult);

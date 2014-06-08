@@ -16,6 +16,8 @@
 
 package uk.co.senab.actionbarpulltorefresh.library;
 
+import android.view.View;
+
 /**
  * Allows you to specify a number of configuration options when setting up a {@link PullToRefreshLayout}.
  */
@@ -40,6 +42,7 @@ public final class Options {
     float refreshScrollDistance = DEFAULT_REFRESH_SCROLL_DISTANCE;
     boolean refreshOnUp = DEFAULT_REFRESH_ON_UP;
     int refreshMinimizeDelay = DEFAULT_REFRESH_MINIMIZED_DELAY;
+    View maskView = null;
 
     /**
      * Enable or disable the header 'minimization', which by default means that the majority of
@@ -125,6 +128,11 @@ public final class Options {
             return this;
         }
 
+        public Builder mask(View maskView) {
+        	mOptions.maskView = maskView;
+        	return this;
+        }
+        
         /**
          * @return the built {@link Options} instance.
          */
