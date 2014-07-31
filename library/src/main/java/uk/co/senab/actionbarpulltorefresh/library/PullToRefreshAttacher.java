@@ -314,7 +314,7 @@ public class PullToRefreshAttacher {
     }
 
     final boolean isViewBeingDragged(View view, MotionEvent event) {
-    	if (mMaskView != null && mMaskView.isShown()) {
+    	if ((mMaskView != null && mMaskView.isShown()) || !view.isEnabled()) {
     		if (DEBUG) Log.d(LOG_TAG, "Mask is visible on the UI. I will do NOTHING!!");
     		return false;
     	}
